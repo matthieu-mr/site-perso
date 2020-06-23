@@ -4,6 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import MyMenu from './Menu'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee,faGraduationCap,faGlobe,faReact } from '@fortawesome/free-solid-svg-icons'
+
 
 // import CSS
 import Grid from '@material-ui/core/Grid';
@@ -17,14 +20,14 @@ import CardActions from '@material-ui/core/CardActions';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-
+import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
 
 
 
 
 function Home(props) {
   const { classes } = props;
-
+  
 
   return(
     <div>
@@ -62,7 +65,7 @@ function Home(props) {
         <CardHeader className={classes.carditem}
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
-                R
+                <FontAwesomeIcon icon={faGraduationCap} />
               </Avatar>
             }
             title="Expériences professionnelles"
@@ -86,9 +89,7 @@ function Home(props) {
     <Card className={classes.card}>
         <CardHeader className={classes.carditem}
             avatar={
-              <Avatar aria-label="recipe" className={classes.avatar}>
-                R
-              </Avatar>
+              <FontAwesomeIcon icon={faGlobe} />
             }
             title="Projet Web"
             
@@ -111,11 +112,9 @@ function Home(props) {
 {/* ---------------------  Experience Web --------------------- */}
     <Card className={classes.card}>
       <CardHeader className={classes.carditem}
-                  avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-                      R
-                    </Avatar>
-                  }
+            avatar={
+              <FontAwesomeIcon icon={faReact} />
+            }
                   title="Shrimp and Chorizo Paella"
                   
                 />
@@ -159,6 +158,7 @@ const styles = {
     marginBottom:"50px",
   },
   pictureheader:{
+    alignSelf:"flex-end",
     height:200,
   },
 
