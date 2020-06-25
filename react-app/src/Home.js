@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import MyMenu from './Menu'
+import {connect} from 'react-redux';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee,faGraduationCap,faGlobe,faReact } from '@fortawesome/free-solid-svg-icons'
+import Modals from "./components/Modals"
+
 
 
 // import CSS
@@ -22,7 +23,10 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
 
-
+// import des icones 
+import PersonIcon from '@material-ui/icons/Person';
+import DevicesIcon from '@material-ui/icons/Devices';
+import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
 
 
 function Home(props) {
@@ -65,7 +69,7 @@ function Home(props) {
         <CardHeader className={classes.carditem}
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
-                <FontAwesomeIcon icon={faGraduationCap} />
+                 <PersonIcon />
               </Avatar>
             }
             title="Expériences professionnelles"
@@ -85,11 +89,13 @@ function Home(props) {
     </Card>
 
 
-{/* ---------------------  Card --------------------- */}
+{/* ---------------------  exp web --------------------- */}
     <Card className={classes.card}>
         <CardHeader className={classes.carditem}
             avatar={
-              <FontAwesomeIcon icon={faGlobe} />
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                 <DesktopWindowsIcon />
+              </Avatar>
             }
             title="Projet Web"
             
@@ -109,11 +115,13 @@ function Home(props) {
 
 
 
-{/* ---------------------  Experience Web --------------------- */}
+{/* ---------------------  Experience react nativ --------------------- */}
     <Card className={classes.card}>
       <CardHeader className={classes.carditem}
             avatar={
-              <FontAwesomeIcon icon={faReact} />
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                 <DevicesIcon />
+              </Avatar>
             }
                   title="Shrimp and Chorizo Paella"
                   
@@ -193,6 +201,9 @@ const styles = {
   cover: {
     width: 151,
   },
+  avatar:{
+    background:"#4a0072"
+  },
 };
 
 
@@ -200,4 +211,25 @@ Home.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Home);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    isVisible: function(info) { 
+      dispatch( {type: 'isVisible'}) 
+    },
+    
+  }
+}
+
+function mapStateToProps(state) {
+  return { infoVisible: state.isvisible }
+}
+  
+export default connect(
+  mapStateToProps, 
+    mapDispatchToProps
+)( withStyles(styles)(Home));
+
+
+
+//export default withStyles(styles)(Home);
