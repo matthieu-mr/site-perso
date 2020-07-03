@@ -1,10 +1,9 @@
-export default function(visible = true, action) {
+export default function(visible = false, action) {
 
 
-    if(action.type == 'isVisible') {
+    if(action.type === 'isVisible') {
       var newVisible = !visible 
-
-     // ok -  console.log("action reducer-------->", newVisible)
+      console.log("reducer --->", newVisible)
       return newVisible;
     
     } else {

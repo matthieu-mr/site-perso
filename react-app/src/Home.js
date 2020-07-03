@@ -1,27 +1,25 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import MyMenu from './Menu'
 import {connect} from 'react-redux';
 
-import Modals from "./components/Modals"
+import SimpleModal from "./components/Modals"
 
 
 
 // import CSS
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
+
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
+
 
 // import des icones 
 import PersonIcon from '@material-ui/icons/Person';
@@ -30,13 +28,19 @@ import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
 
 
 function Home(props) {
+
   const { classes } = props;
-  
+  console.log(" /////// Home ", props.infoVisible)
+
+  useEffect(() => {
+    console.log("use home", props.infoVisible)
+    },[props.infoVisible]);
+
 
   return(
     <div>
-      <MyMenu />
-      <Button className={classes.bouton}>Styled with HOC API</Button>
+    <MyMenu />
+    <SimpleModal />
 
 <Grid container className={classes.bodystyle} >
   <Grid item sm={8} className={classes}>
@@ -170,7 +174,6 @@ const styles = {
     height:200,
   },
 
-
   card:{
     marginBottom:"50px",
   },
@@ -183,6 +186,7 @@ const styles = {
     color: 'white',
     height: 48,
     padding: '0 30px',
+    marginTop:-30
   },
   text:{
     color:"red",
@@ -222,7 +226,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { infoVisible: state.isvisible }
+  return { infoVisible: state.modals }
 }
   
 export default connect(

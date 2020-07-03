@@ -15,9 +15,9 @@ import Projets from "./Projets";
 
 
 // redux 
-import Modals from "./reducer/ModalReducer"
+import modals from "./reducer/ModalReducer"
 
-const store = createStore(combineReducers({Modals}));
+const store = createStore(combineReducers({modals}));
 
 function App() {
   return (
