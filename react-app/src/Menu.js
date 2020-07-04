@@ -83,15 +83,7 @@ function MyMenu(props) {
                 <PersonIcon  className={classes.icon} />
                 Projet React & React NNativ
             </Link>
-            <Link
-                color="inherit"
-                href="/experiences"
-                onClick={handleClick}
-                className={classes.link}
-            >
-                <PersonIcon  className={classes.icon} />
-                Projet React & React NNativ
-            </Link>
+
 
   </Breadcrumbs>
     </Grid>

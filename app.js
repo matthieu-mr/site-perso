@@ -4,11 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+
+require('./models/connection');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
+var mongoose = require('./models/bdd_connexion');
 // view engine setup
 
 //app.use(express.static(path.join(__dirname, 'public')));
