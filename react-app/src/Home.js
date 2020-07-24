@@ -1,19 +1,25 @@
 import React,{useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles,makeStyles  } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import MyMenu from './Menu'
 import {connect} from 'react-redux';
 
 import SimpleModal from "./components/Modals"
 
+// import des tabs
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
+import Box from '@material-ui/core/Box';
 
 // import CSS
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 
+// import des cards
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Divider from '@material-ui/core/Divider';
@@ -27,6 +33,53 @@ import DevicesIcon from '@material-ui/icons/Devices';
 import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
 
 
+
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
+
+
+
+
+
 function Home(props) {
 
   const { classes } = props;
@@ -36,6 +89,14 @@ function Home(props) {
     console.log("use home", props.infoVisible)
     },[props.infoVisible]);
 
+
+   // Partie tabs 
+    
+    const [value, setValue] = React.useState(0);
+  
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
 
   return(
     <div>
@@ -54,6 +115,9 @@ function Home(props) {
             <Grid item sm={8}>
               <Typography variant="subtitle1" color="textSecondary">
               Matthieu Michon
+              Après plusieurs années passées en gestion de projet webmarketing,responsable Ux et fait du Growth Hacking, j'ai décidé de me réorienter dans le domaine du développement. 
+              J'ai donc intégré la capsule, un bootcamp de développement spécialisé sur le language javascript dans l'objectif 
+              d'acquérir les compétences nécessaires au développement d"application web & web Mobile sous React et React Native
               </Typography>
             </Grid>
 
@@ -82,13 +146,31 @@ function Home(props) {
 
       <CardContent>
         <Typography variant="body" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+        Test des tab
         </Typography>
+
       </CardContent>
       <Divider variant="middle" />
       <CardActions>
-        <Button className={classes.boutoncard}>Découvrir mes expériences</Button>
+      <div className={classes.root}>
+            <AppBar position="static">
+              <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+                <Tab label="Item One" {...a11yProps(0)} />
+                <Tab label="Item Two" {...a11yProps(1)} />
+                <Tab label="Item Three" {...a11yProps(2)} />
+              </Tabs>
+            </AppBar>
+            <TabPanel value={value} index={0}>
+              Item One
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              Item Two
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              Item Three
+            </TabPanel>
+          </div>
+
       </CardActions>
     </Card>
 
