@@ -107,7 +107,8 @@ const styles = {
     background: '#7b1fa2',
     marginTop:"500",
     padding: 30,
-    color:"white"
+    color:"white",
+    
   },
   link: {
     display: 'flex',
