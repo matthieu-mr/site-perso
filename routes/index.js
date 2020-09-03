@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var request = require('sync-request');
+
 
 //import des routes
 var projetModel = require('../models/projets-md')
@@ -27,14 +29,17 @@ router.get('/', function(req, res, next) {
   res.json( {info} );
 });
 
-router.get('/home', async function(req, res, next) {
-let info = "hello"
-
-
+router.get('/experiences', async function(req, res, next) {
 let result = await expModel.find();
-
-  res.json( {info} );
+  res.json( {result} );
 });
+
+
+
+router.get('/projets', async function(req, res, next) {  
+  let result = await projetModel.find();
+     res.json( {result} );
+  });
 
 
 router.post('/sendcontact', function(req, res, next) {

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var expSchema = mongoose.Schema({
-    diplome : String,
+    diplôme : String,
     type:String,
     date:String,
     nom:String,
@@ -9,7 +9,7 @@ var expSchema = mongoose.Schema({
 });
 
 
-var expModel = mongoose.model('experience', expSchema);
+var expModel = mongoose.model('experiences', expSchema);
 
 module.exports=expModel
 ;
