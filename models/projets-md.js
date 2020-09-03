@@ -6,13 +6,14 @@ var projetSchema = mongoose.Schema({
     type_projet:String,
     techno:String,
     objectifs:String,
-    lien_git:String,
-    lien_perso:String,
+    lien_git_front:String,
+    lien_perso_back:String,
+    lien_perso:String
 
 });
 
 
-var projetModel = mongoose.model('projets', projetSchema);
+var projetModel = mongoose.model('projet', projetSchema);
 
 module.exports=projetModel
 ;
