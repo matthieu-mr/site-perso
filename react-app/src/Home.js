@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import SimpleModal from "./components/Modals"
 import ExpCards from "./components/ExpCards"
 import MyMenu from './Menu'
+import Projet from './components/Projet'
 // import CSS
 
 import { Link } from '@material-ui/core';
@@ -49,19 +50,25 @@ function Home(props) {
 
 // data for all projects
 
-const [listProject,setListProject] = useState()
+const [listProject,setListProject] = useState([])
 
 useEffect(() => {
   async function recupDonnée(){
       var requestBDD = await fetch(`http://localhost:3000/projets`)
-      var listProjet = await requestBDD.json()
-      setListProject(listProjet)
+      var listProjetRaw = await requestBDD.json()
+      console.log("liste projet reaquete",listProjetRaw)
+      setListProject(listProjetRaw.result)
     }
   recupDonnée()
 },[]);
 
 
-
+var projetWordpress = listProject.map (function(item,i){
+  console.log("premier boucle", item.type_projet)
+  if(item.type_projet ="Wordpress" ){
+   return <Projet key={i} name={item.name} />
+  }
+})
 
 
 
@@ -150,17 +157,9 @@ useEffect(() => {
             }
             title="Projet Web - Autour de Wordpress" 
           />
+    
+    {projetWordpress}
 
-      <CardContent>
-        <Typography variant="body" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
-      </CardContent>
-      <Divider variant="middle" />
-      <CardActions>
-        <Button className={classes.boutoncard}>Découvrir mes expériences</Button>
-      </CardActions>
     </Card>
 
   </Grid>

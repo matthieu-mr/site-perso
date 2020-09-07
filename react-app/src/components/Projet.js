@@ -29,57 +29,23 @@ function Projet(props) {
 const { classes } = props;
 const [listExp, setListExt] = useState()
 
-    let Affichage = (
-        <div className={classes.progress}>
-    <CircularProgress color="#eceff1" />
-        </div>
-        
-    )
-    if(listExp){
-        Affichage = (
-            listExp.map((item)=>{
-                console.log(item.diplôme)
-                let lien = `http://google.fr`
-                return (
-                    <Grid item sm={4}> 
-                    <Card className={classes.exp}>
-                    <CardHeader className={classes.carditemExp}
-                                classes={{
-                                subheader:classes.subheader
-                                }}
-                            title={item.diplôme}
-                            subheader={item.type}
-                        />
-                    <CardContent>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                       informations sur le projet
-                        </Typography>
-                    </CardContent>
-                
-                    <CardActions>
-                    <Link href={lien}>
-                        <Button size="small" color="red">
-                        Lien vers le projet
-                        </Button>
-                    </Link>
-                
-                    </CardActions>
-                    </Card>
-                    </Grid>
-                
-                )
-            })
-        )  
-    }
 
 
   return (
-<Grid className={classes.expGrid}>
- 
-   {Affichage}
- 
+    <div>     
+    <CardContent>
+    <Typography variant="body" color="textSecondary" component="p">
+      This impressive paella is a perfect party dish and a fun meal to cook together with your
+      guests. Add 1 cup of frozen peas along with the mussels, if you like.
+    </Typography>
+  </CardContent>
+  <Divider variant="middle" />
+  <CardActions>
+    <Button className={classes.boutoncard}>Découvrir mes expériences</Button>
+  </CardActions>
 
-</Grid>
+
+    </div>
 
 
   );
@@ -127,12 +93,12 @@ const styles = {
     
 
 
-
+/*
     ExpTab.propTypes = {
         classes: PropTypes.object.isRequired,
       };
       
-
+*/
 function mapDispatchToProps(dispatch) {
     return {
       isVisible: function(info) { 

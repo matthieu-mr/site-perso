@@ -48,8 +48,7 @@ const [listExp, setListExt] = useState()
     if(listExp){
         Affichage = (
             listExp.map((item)=>{
-                console.log(item.diplôme)
-                let lien = `${item.lien}`
+             let lien = `${item.lien}`
                 return (
                     <Grid item sm={4}> 
                     <Card className={classes.exp}>
