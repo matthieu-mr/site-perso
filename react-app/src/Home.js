@@ -1,26 +1,23 @@
-import React,{useEffect,handleClick,handleDelete} from 'react';
+import React,{useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles,makeStyles  } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import MyMenu from './Menu'
+import { withStyles  } from '@material-ui/core/styles';
 import {connect} from 'react-redux';
 
+
+// import components
 import SimpleModal from "./components/Modals"
-
-import { Link ,Paper} from '@material-ui/core';
-
-
-// import des tabs
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-
-import Box from '@material-ui/core/Box';
-
+import ExpCards from "./components/ExpCards"
+import MyMenu from './Menu'
 // import CSS
+
+import { Link } from '@material-ui/core';
+
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
+import Button from '@material-ui/core/Button';
+
+
 
 // import des cards
 import CardContent from '@material-ui/core/CardContent';
@@ -33,63 +30,11 @@ import Typography from '@material-ui/core/Typography';
 // import des icones 
 
 import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
-import DoneIcon from '@material-ui/icons/Done';
-
-
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
-
-
-
-
 
 
 function Home(props) {
 
   const { classes } = props;
-  console.log(" /////// Home ", props.infoVisible)
-
-  useEffect(() => {
-    console.log("use home", props.infoVisible)
-    },[props.infoVisible]);
 
 
    // Partie tabs 
@@ -99,6 +44,29 @@ function Home(props) {
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
+
+
+
+// data for all projects
+
+const [listProject,setListProject] = useState()
+
+useEffect(() => {
+  async function recupDonnée(){
+      var requestBDD = await fetch(`http://localhost:3000/projets`)
+      var listProjet = await requestBDD.json()
+      setListProject(listProjet)
+    }
+  recupDonnée()
+},[]);
+
+
+
+
+
+
+
+
 
   return(
     <div className={classes.body}>
@@ -143,91 +111,9 @@ function Home(props) {
 
 <Typography component="h2" className={classes.expTitle}> Formations</Typography>
 
-<Grid className={classes.expGrid}>
-  <Grid item sm={4}>  
-    <Card className={classes.exp}>
-    <CardHeader className={classes.carditemExp}
-                classes={{
-                  subheader:classes.subheader
-                }}
-            title="Bootcamp"
-            subheader="React / React Native / Node.js "
-          />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-        Dates : <br /> 
-        Mars à Mai 2020<br /><br />
-        Lacapsule
-        </Typography>
-      </CardContent>
 
-      <CardActions>
-      <Link href="https://www.lacapsule.academy/" >
-        <Button size="small" color="primary">
-        Voir le site de la fomation
-        </Button>
-      </Link>
+  <ExpCards />
 
-      </CardActions>
-    </Card>
-  </Grid>
-
-  <Grid item sm={4}>  
-    <Card className={classes.exp}>
-    <CardHeader className={classes.carditemExp}
-                classes={{
-                  subheader:classes.subheader
-                }}
-            title="MBA"
-            subheader="Digital Marketing & E-Commerce"
-          />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-        Dates : <br />
-        Septembre 2013 à Septembre 2014 <br /><br />
-        Institut Léonard de Vinci
-        </Typography>
-      </CardContent>
-
-      <CardActions>
-      <Link href="https://www.ilv.fr/formation/master-marketing-digital/" >
-        <Button size="small" color="primary">
-        Voir le site de la fomation
-        </Button>
-      </Link>
-
-      </CardActions>
-    </Card>
-  </Grid>
-
-  <Grid item sm={4} >  
-    <Card className={classes.exp}>
-    <CardHeader className={classes.carditemExp}
-                classes={{
-                  subheader:classes.subheader
-                }}
-            title="Master 2"
-            subheader="Management des TIC"
-          />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-            Dates : <br />
-            Septembre 2010 à Septembre 2013 <br /><br />
-            IAE Gustave Eiffel
-        </Typography>
-      </CardContent>
-
-      <CardActions>
-      <Link href="https://formations.univ-gustave-eiffel.fr/index.php?id=1941&tx_agof_brochure%5Bbrochure%5D=445&tx_agof_brochure%5Baction%5D=show&tx_agof_brochure%5Bcontroller%5D=Brochure&cHash=a1b94b3a756b1200691d4f6884e04232" >
-        <Button size="small" color="primary">
-        Voir le site de la fomation
-        </Button>
-      </Link>
-
-      </CardActions>
-    </Card>
-  </Grid>
-</Grid>
 
    <Divider variant="middle" />
 
@@ -330,10 +216,6 @@ body:{
 backgroundColor:"#873ba1"
   },
 
-  expGrid:{
-    display:"flex",
-    marginBottom:"15px"
-  },
 
   expTitle:{
     fontSize:"20px",
