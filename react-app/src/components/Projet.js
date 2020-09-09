@@ -24,28 +24,139 @@ import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
+// import list
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import IconButton from '@material-ui/core/IconButton';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import FolderIcon from '@material-ui/icons/Folder';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+
 
 function Projet(props) {
 const { classes } = props;
 const [listExp, setListExt] = useState()
 
+console.log("recup projet", props.name)
+
+let objectifs = "type de projet : " + props.objectif
+
+let git_front
+let git_back
+let lien
+let icon 
+
+switch (props.icon){
+  case "wordpress" : 
+    icon = "/wordpress.png"
+    break ;
+  case "site" : 
+    icon = "/web.png"
+    break ;
+  case "appli" : 
+    icon ="/playstore.png"
+    break ;
+}
+
+
+
+if (props.front !== "false"){
+  git_front = (
+  <Link href={props.front} >
+    <ListItem>
+      <ListItemAvatar>
+        <Avatar src="/git_front.png" alt="image" />
+        </ListItemAvatar>
+      <ListItemText  primary ="Lien Github" secondary="front-office" />
+    </ListItem>
+  </Link>
+
+  )
+}
+
+
+if (props.back !== "false"){
+  git_back = (
+    <Link href={props.back} >
+    <ListItem>
+      <ListItemAvatar>
+        <Avatar src="/github.png" alt="image" />
+        </ListItemAvatar>
+      <ListItemText  primary ="Lien Github" secondary="back-office" />
+    </ListItem>
+  </Link>
+  )
+}
+
+if (props.lien !== "false"){
+  lien = (
+    <Link href={props.lien} >
+    <ListItem>
+      <ListItemAvatar>
+        <Avatar src={icon} alt="image" />
+        </ListItemAvatar>
+      <ListItemText  primary ={props.type} secondary="back-office" />
+    </ListItem>
+  </Link>
+  )
+}
+
+
+if(props.lien =="false" && props.back =="false" && props.front =="false") {
+  lien = (
+    <Typography variant="body2" component="p">
+    Aucun lien disponible
+    </Typography>
+  )
+}
+
+
+
+
+
+
 
 
   return (
-    <div>     
-    <CardContent>
-    <Typography variant="body" color="textSecondary" component="p">
-      This impressive paella is a perfect party dish and a fun meal to cook together with your
-      guests. Add 1 cup of frozen peas along with the mussels, if you like.
-    </Typography>
-  </CardContent>
-  <Divider variant="middle" />
-  <CardActions>
-    <Button className={classes.boutoncard}>Découvrir mes expériences</Button>
-  </CardActions>
+      
+        <Grid item  sm={4}> 
+                    <Card className={classes.exp}>
+                    <CardHeader className={classes.carditemExp}
+                                classes={{
+                                subheader:classes.subheader
+                                }}
+                            title={props.name}
+                        />
+                    <CardContent>
+                    <Typography variant="body2" component="p">
+                        {props.description}
+                        </Typography>
 
+                        <Typography variant="body2" color="textSecondary" component="p" className={classes.secondary}>
+                        {props.techno} <br />
+                       {objectifs}
+                        </Typography>
+                    </CardContent>
+                      <Divider />
+                    <CardActions>
+                      <List>                         
+                        {git_front}
+                        {git_back}
+                        {lien}
 
-    </div>
+                      </List>
+
+                    </CardActions>
+                    </Card>
+                    </Grid>
+   
 
 
   );
@@ -55,9 +166,6 @@ const [listExp, setListExt] = useState()
 
 const styles = {
 
-    body:{
-      backgroundColor:"#eceff1"
-    },
         
       subheader:{
         color:"white"
@@ -70,25 +178,25 @@ const styles = {
       },
     
       carditemExp:{
-    backgroundColor:"#873ba1",
+    backgroundColor:"#9c4dcc",
+    height:"75px"
 
       },
     
-  expGrid:{
-    display:"flex",
-    marginBottom:"15px"
-  },
-
       exp:{
         margin:"15px",
         marginBottom:"10px",    
       },
 
-      progress:{
-          display:"flex",
-          margin:"auto",
-         
+      link:{
+        display:"flex",
+      },
+
+      secondary:{
+        marginTop:"15px"
       }
+
+
     };
     
 

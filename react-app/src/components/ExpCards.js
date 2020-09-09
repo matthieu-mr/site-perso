@@ -66,6 +66,8 @@ const [listExp, setListExt] = useState()
                         {item.nom}
                         </Typography>
                     </CardContent>
+
+                    <Divider />
                 
                     <CardActions>
                     <Link href={lien}>
@@ -100,10 +102,6 @@ const [listExp, setListExt] = useState()
 
 const styles = {
 
-    body:{
-      backgroundColor:"#eceff1"
-    },
-        
       subheader:{
         color:"white"
       },
@@ -115,7 +113,7 @@ const styles = {
       },
     
       carditemExp:{
-    backgroundColor:"#873ba1",
+    backgroundColor:"#9c4dcc",
 
       },
     

@@ -64,11 +64,24 @@ useEffect(() => {
 
 
 var projetWordpress = listProject.map (function(item,i){
-  console.log("premier boucle", item.type_projet)
-  if(item.type_projet ="Wordpress" ){
-   return <Projet key={i} name={item.name} />
+  if(item.type_projet =="Site Wordpress" ){
+   return <Projet key={i} icon="wordpress" type ={item.type_projet} name={item.nom} description={item.description} techno ={item.techno} objectif={item.objectifs} front={item.lien_git_front} back={item.lien_git_back} lien={item.lien_perso} />
   }
 })
+
+var web = listProject.map (function(item,i){
+  if(item.type_projet =="Site internet" ){
+   return <Projet key={i} icon="site" type ={item.type_projet} name={item.nom} description={item.description} techno ={item.techno} objectif={item.objectifs} front={item.lien_git_front} back={item.lien_git_back} lien={item.lien_perso} />
+  }
+})
+
+
+var appli = listProject.map (function(item,i){
+  if(item.type_projet =="Application Mobile" ){
+   return <Projet key={i} icon="appli"  type ={item.type_projet} name={item.nom} description={item.description} techno ={item.techno} objectif={item.objectifs} front={item.lien_git_front} back={item.lien_git_back} lien={item.lien_perso} />
+  }
+})
+
 
 
 
@@ -144,6 +157,23 @@ var projetWordpress = listProject.map (function(item,i){
 
 
 
+{/* ---------------------  exp web --------------------- */}
+<Card className={classes.card}>
+        <CardHeader className={classes.carditem}
+            avatar={
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                 <DesktopWindowsIcon />
+              </Avatar>
+            }
+            title="Applications Mobiles" 
+          />
+
+        <Grid className={classes.gridProjet}>
+        {appli}
+        </Grid>
+    </Card>
+
+
 
 
 
@@ -155,12 +185,39 @@ var projetWordpress = listProject.map (function(item,i){
                  <DesktopWindowsIcon />
               </Avatar>
             }
+            title="Projet Web - React - Node.js / express" 
+          />
+
+        <Grid className={classes.gridProjet}>
+        {web}
+        </Grid>
+    </Card>
+
+
+{/* ---------------------  exp wordpress --------------------- */}
+<Card className={classes.card}>
+        <CardHeader className={classes.carditem}
+            avatar={
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                 <DesktopWindowsIcon />
+              </Avatar>
+            }
             title="Projet Web - Autour de Wordpress" 
           />
-    
-    {projetWordpress}
 
+        <Grid className={classes.gridProjet}>
+        {projetWordpress}
+        </Grid>
     </Card>
+
+
+
+
+
+
+
+
+
 
   </Grid>
   </Grid>
@@ -184,7 +241,6 @@ body:{
 
   },
 
-
   cardheader:{
     display:"flex",
     flexDirection:"column",
@@ -195,16 +251,12 @@ body:{
     alignSelf:"flex-end",
     height:200,
   },
-
   subheader:{
     color:"white"
   },
-
   card:{
     marginTop:"50px",
   },
-
-
   carditem:{
     background: '#7b1fa2',
     color: 'white',
@@ -257,6 +309,13 @@ backgroundColor:"#873ba1"
   avatar:{
     background:"#4a0072"
   },
+
+  gridProjet:{
+    display:"flex",
+    marginBottom:"15px"
+  }
+
+
 };
 
 
