@@ -13,7 +13,7 @@ var mongoose = require('./models/bdd_connexion');
 // view engine setup
 
 //app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'reactapp/build')));
+app.use(express.static(path.join(__dirname, 'react-app/build')));
 
 app.set('view engine', 'ejs');
 
