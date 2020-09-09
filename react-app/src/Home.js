@@ -54,7 +54,7 @@ const [listProject,setListProject] = useState([])
 
 useEffect(() => {
   async function recupDonnée(){
-      var requestBDD = await fetch(`http://localhost:3000/projets`)
+      var requestBDD = await fetch(`/projets`)
       var listProjetRaw = await requestBDD.json()
       console.log("liste projet reaquete",listProjetRaw)
       setListProject(listProjetRaw.result)

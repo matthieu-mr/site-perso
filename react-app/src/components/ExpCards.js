@@ -31,7 +31,7 @@ const [listExp, setListExt] = useState()
 
     useEffect(() => {
         async function recupDonnée(){
-            var requestBDD = await fetch(`http://localhost:3000/experiences`)
+            var requestBDD = await fetch(`/experiences`)
             var listExp = await requestBDD.json()
             setListExt(listExp.result)
           }
