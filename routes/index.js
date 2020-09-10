@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var request = require('sync-request');
- nodemailer = require ('nodemailer') ; 
-  bodyParser = require('body-parser');
+var nodemailer = require ('nodemailer') ; 
+var  bodyparser = require('body-parser');
 
 
 //import des routes
@@ -39,14 +39,14 @@ router.get('/projets', async function(req, res, next) {
 
   router.post('/sendmail', async function(req, res, next) {
 
-    let transporter = nodeMailer.createTransport({
+    let transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
       secure: true,
       auth: {
           // should be replaced with real sender's account
           user: 'm.michon.rossel@gmail.com',
-          pass: 'Uni94forMail'
+          pass: 'hbmxoxyvcrunsrxb'
       },
       tls: { 
         // do not fail on invalid certs 
@@ -61,11 +61,12 @@ router.get('/projets', async function(req, res, next) {
   };
   transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-          return console.log(error);
+          return console.log("erreure transporter",error);
       }
       console.log('Message %s sent: %s', info.messageId, info.response);
   });
 
+  let result ="test"
        res.json( {result} );
     });
   
