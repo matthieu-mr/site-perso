@@ -103,8 +103,13 @@ function SimpleModal() {
 
 
   let sendForm =()=>{
-    console.log('clic on',phone)
-    
+    var message = {
+      from: mail,
+      to: "receiver@sender.com",
+      subject: "Email depuis site CV Perso",
+      text: info + phone,
+      html: `<p>${info}</p> <p>${phone} </p>`
+    }; 
   }
 
   return (
