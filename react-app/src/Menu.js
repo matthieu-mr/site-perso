@@ -87,7 +87,9 @@ function MyMenu(props) {
   const StyledMenuItem = withStyles((theme) => ({
     root: {
       '&:focus': {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: "#4a0072",
+        textDecoration:"none",
+       
         '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
           color: theme.palette.common.white,
         },
@@ -170,6 +172,7 @@ affichageMenu = (
       >
           <MenuIcon  className={classes.icon} />
       </Button>
+
       <StyledMenu
         id="customized-menu"
         anchorEl={anchorEl}
@@ -177,30 +180,35 @@ affichageMenu = (
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+    <Link href="#appli"> 
+   
         <StyledMenuItem>
-        <Link
-                color="inherit"
-                href="#wordpress"
-            >
           <ListItemIcon>
-            <SendIcon fontSize="small" />
+            <PhoneIphoneIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Sent mail" />
-        </Link>
+          <ListItemText primary="Applications Mobiles" />
         </StyledMenuItem>
+    </Link>
+    <Link href="#web">  
+  
+        <StyledMenuItem>
+          <ListItemIcon>
+            <DesktopMacIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="Projets web" />
+        </StyledMenuItem>
+    </Link>
 
-        <StyledMenuItem>
+        <Link href="#wordpress"> 
+        
+        <StyledMenuItem >
+        
           <ListItemIcon>
-            <DraftsIcon fontSize="small" />
+            <WebIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Drafts" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
-        </StyledMenuItem>
+          <ListItemText primary="Projets wordpress" />
+          </StyledMenuItem>
+        </Link>
       </StyledMenu>
     </div>
     </Grid>

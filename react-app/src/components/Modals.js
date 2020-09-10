@@ -45,21 +45,20 @@ const CssTextField = withStyles({
 })(TextField);
 
 
-
-
-
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: '1px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+
   fab:{
     marginLeft:"80%",
     marginRight:"20%",
@@ -73,7 +72,6 @@ const useStyles = makeStyles((theme) => ({
       background: '#c158dc',
     },
     
-
   },
   root: {
     '& > *': {
@@ -82,11 +80,22 @@ const useStyles = makeStyles((theme) => ({
     },
     
   },
+  constainerLien:{
+    display:"flex"
+  },
+  
   lien:{
     color: '#4a0072',
     textDecoration:"none",
-    margin:15,
-    display:"flex"
+    
+    display:"flex",
+    flex:1
+
+  },
+  button:{
+    background:"#4a0072",
+    marginLeft:"80%",
+    marginTop:"15px",
 
   }
 
@@ -94,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SimpleModal() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [phone,setPhone] = useState('');
   const [mail,setMail] = useState('');
   const [info,setInfo] = useState('');
@@ -116,11 +125,65 @@ function SimpleModal() {
     var requestBDD = await fetch(`/sendmail`,{
       method:"POST",
       headers: {'Content-Type':'application/x-www-form-urlencoded'},
-      body:`mail=${mail}&info=${info}&phone=${phone}`
+      body:`mail=${mail}&info=${info}&phone=${phone}&name=${name}`
     })
     var listActivityRaw = await requestBDD.json()
 
   }
+
+let formModal = (
+<div>
+  <CssTextField
+  className={classes.margin}
+  label="Vos Nom & prénom"
+  id="standard-basic"
+  onChange={(e)=> setName(e.target.value)}
+  fullWidth
+/>
+
+
+<CssTextField
+  className={classes.margin}
+  label="Votre téléphone"
+  id="custom-css-outlined-input"
+  onChange={(e)=> setPhone(e.target.value)}
+  fullWidth
+/>
+
+
+<CssTextField
+  className={classes.margin}
+  label="Votre Email"
+  id="custom-css-outlined-input"
+  onChange={(e)=> setMail(e.target.value)}
+  fullWidth
+/>
+
+              
+<CssTextField
+  className={classes.margin}
+  label="Autres informations"
+  id="custom-css-outlined-input"
+  onChange={(e)=> setInfo(e.target.value)}
+  fullWidth
+  multiline
+/>
+
+
+  <Button 
+    variant="contained"
+    color="primary"
+    className={classes.button}
+    endIcon={<SendIcon/>}
+    onClick={sendForm}
+  >
+   Envoyer
+</Button>
+</div>
+
+)
+
+
 
   return (
     <div>
@@ -142,67 +205,18 @@ function SimpleModal() {
         }}
       >
 
-
-
         <Fade in={open}>
         
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Me contacter :</h2>
-
-            <a href="tel:+33618199252"  className={classes.lien} > <PhoneAndroidIcon /> Téléphone : 06 18 19 92 52</a>
-            <a href="mailto:m.michon.rossel@gmail.com"   className={classes.lien}> <MailOutlineIcon /> Mail :  m.michon.rossel@gmail.com</a>
-
+           <div className={classes.containerLien}>
+              <a href="tel:+33618199252"  className={classes.lien} > <PhoneAndroidIcon /> Téléphone : 06 18 19 92 52</a> <br />
+              <a href="mailto:m.michon.rossel@gmail.com"   className={classes.lien}> <MailOutlineIcon /> Mail :  m.michon.rossel@gmail.com</a>
+            </div>  
             <h2 id="transition-modal-title">Contact via formulaire :</h2>
             <form className={classes.root} noValidate autoComplete="on">
               
-            <CssTextField
-                className={classes.margin}
-                label="Vos Nom & prénom"
-                id="standard-basic"
-                onChange={(e)=> setName(e.target.value)}
-                fullWidth
-              />
-
-
-              <CssTextField
-                className={classes.margin}
-                label="Votre téléphone"
-                id="custom-css-outlined-input"
-                onChange={(e)=> setPhone(e.target.value)}
-                fullWidth
-              />
-
-              
-              <CssTextField
-                className={classes.margin}
-                label="Votre Email"
-                id="custom-css-outlined-input"
-                onChange={(e)=> setMail(e.target.value)}
-                fullWidth
-              />
-
-                            
-              <CssTextField
-                className={classes.margin}
-                label="Autres informations"
-                id="custom-css-outlined-input"
-                onChange={(e)=> setInfo(e.target.value)}
-                fullWidth
-                multiline
-              />
-  
-
-                <Button 
-                  variant="contained"
-                  color="primary"
-                  className={classes.fab}
-                  endIcon={<SendIcon/>}
-                  onClick={sendForm}
-                >
-                 Envoyer
-            </Button>
-
-
+              {formModal}
 
 
            </form>
