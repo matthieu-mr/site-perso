@@ -90,7 +90,7 @@ var appli = listProject.map (function(item,i){
 
 <Card className={classes.card} style={{marginTop:20}}>
   <Grid container spacing={4}>
-    <Grid item xs={12} sm={8} justify="flex-start" >  
+    <Grid item xs={12} sm={8} >  
         <CardHeader className={classes.carditem}
             title="Développeur Web & Web Mobile "
           />

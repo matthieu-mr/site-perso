@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles  } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
@@ -20,6 +20,12 @@ import Grid from '@material-ui/core/Grid';
 import PersonIcon from '@material-ui/icons/Person';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
+function MyComponent() {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
+  return matches;
+}
 
 
 function MyMenu(props) {
@@ -40,31 +46,20 @@ function MyMenu(props) {
 
   // menu responsive
   
-  const [isMobile,setIsMobile] = useState(false)
+  const [isMobile,setIsMobile] = useState(true)
 
 // detection mobile 
-let MyComponent =() => {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
-  if (matches){
-    setIsMobile(true)
-  }
-  console.log("breakpoint",matches)
-}
-
-MyComponent()
 
 
+let affichageMenu
+
+console.log("function", MyComponent())
 
 
-
-
-  return (
-<div className={classes.menu}>
+if (MyComponent()==true){
+affichageMenu = (
 <Grid container className={classes.bodystyle} >
   <Grid item sm={8} className={classes}>
-
-    
             <Breadcrumbs aria-label="breadcrumb" separator="-" >
 
             <Link
@@ -94,15 +89,45 @@ MyComponent()
                 <PersonIcon  className={classes.icon} />
                 Projets Wordpress
             </Link>
-
-
-  </Breadcrumbs>
+       </Breadcrumbs>
     </Grid>
   </Grid>
+  )
+}else {
+  
+affichageMenu = (
+  <Grid container className={classes.bodystyle} >
+    <Grid item sm={8} className={classes}>
+              <Breadcrumbs aria-label="breadcrumb" separator="-" >
+  
+              <Link
+                  color="inherit"
+                  href="#appli"
+                  onClick={handleClick}
+                  className={classes.link}
+              >
+                  <PersonIcon  className={classes.icon} />
+                  Applications Mobiles
+              </Link>
+
+         </Breadcrumbs>
+      </Grid>
+    </Grid>
+    )
+
+}
 
 
-    </div>
-    
+
+return (
+<div className={classes.menu}>
+{affichageMenu}
+</div>
+
+
+
+
+
   );
 }
 
