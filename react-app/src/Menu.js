@@ -30,7 +30,9 @@ import PersonIcon from '@material-ui/icons/Person';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import MenuIcon from '@material-ui/icons/Menu';
 
-
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
+import DesktopMacIcon from '@material-ui/icons/DesktopMac';
+import WebIcon from '@material-ui/icons/Web';
 
 function MyComponent() {
   const theme = useTheme();
@@ -117,7 +119,7 @@ affichageMenu = (
                 onClick={handleClick}
                 className={classes.link}
             >
-                <PersonIcon  className={classes.icon} />
+                <PhoneIphoneIcon  className={classes.icon} />
                 Applications Mobiles
             </Link>
             <Link
@@ -126,7 +128,7 @@ affichageMenu = (
                 onClick={handleClick}
                 className={classes.link}
             >
-                <PersonIcon  className={classes.icon} />
+                <DesktopMacIcon  className={classes.icon} />
                 Projets Web
             </Link>
             <Link
@@ -135,7 +137,7 @@ affichageMenu = (
                 onClick={handleClick}
                 className={classes.link}
             >
-                <MenuIcon  className={classes.icon} />
+                <WebIcon  className={classes.icon} />
                 Projets Wordpress
             </Link>
        </Breadcrumbs>

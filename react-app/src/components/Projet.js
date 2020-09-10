@@ -1,12 +1,10 @@
-import React, { useState,useEffect } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import { withStyles  } from '@material-ui/core/styles';
 
 // import CSS
 
 import { Link ,Paper} from '@material-ui/core';
-import Box from '@material-ui/core/Box';
-import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -28,21 +26,13 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
-import IconButton from '@material-ui/core/IconButton';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import FolderIcon from '@material-ui/icons/Folder';
-import DeleteIcon from '@material-ui/icons/Delete';
+
 
 
 
 function Projet(props) {
 const { classes } = props;
-const [listExp, setListExt] = useState()
 
 
 let objectifs = "type de projet : " + props.objectif
@@ -101,7 +91,7 @@ if (props.lien !== "false"){
       <ListItemAvatar>
         <Avatar src={icon} alt="image" />
         </ListItemAvatar>
-      <ListItemText  primary ={props.type} secondary="back-office" />
+      <ListItemText  primary ={props.type} secondary="Lien Direct" />
     </ListItem>
   </Link>
   )
@@ -118,44 +108,46 @@ if(props.lien =="false" && props.back =="false" && props.front =="false") {
 
 
 
-
-
-
-
-
   return (
-    <Grid container spacing={2}   alignItems="stretch">
-        <Grid item  xs={12} sm={4}> 
-                    <Card className={classes.exp}>
-                    <CardHeader className={classes.carditemExp}
-                                classes={{
-                                subheader:classes.subheader
-                                }}
-                            title={props.name}
-                        />
-                    <CardContent>
-                    <Typography variant="body2" component="p">
-                        {props.description}
-                        </Typography>
 
-                        <Typography variant="body2" color="textSecondary" component="p" className={classes.secondary}>
-                        {props.techno} <br />
-                       {objectifs}
-                        </Typography>
-                    </CardContent>
-                      <Divider />
-                    <CardActions>
-                      <List>                         
-                        {git_front}
-                        {git_back}
-                        {lien}
+  <Grid item  xs={12} sm={4}   container
+        direction="row"
+        justify="space-evenly"
+        alignItems="stretch"> 
 
-                      </List>
+   <Card className={classes.exp}>
+      <CardHeader className={classes.carditemExp}
+        classes={{
+        subheader:classes.subheader
+        }}
+      title={props.name}
+      />
+    <CardContent className={classes.content}>
+    
+    <Typography variant="body2" component="p">
+      {props.description}
+    </Typography>
 
-                    </CardActions>
-                    </Card>
-                    </Grid>
-                    </Grid>
+    <Typography variant="body2" color="textSecondary" component="p" className={classes.secondary}>
+      {props.techno} <br />
+      {objectifs}
+    </Typography>
+    
+    </CardContent>
+    
+    <Divider />
+    
+        <CardActions>
+          <List>                         
+            {git_front}
+            {git_back}
+            {lien}
+          </List>
+
+      </CardActions>
+    </Card>
+  </Grid>
+
 
 
   );
@@ -170,14 +162,9 @@ const styles = {
         color:"white"
       },
 
-      carditem:{
-        background: '#7b1fa2',
-        color: 'white',
-    
-      },
     
       carditemExp:{
-    backgroundColor:"#9c4dcc",
+    backgroundColor:"#d1c4e9",
     height:"75px"
 
       },
@@ -193,7 +180,10 @@ const styles = {
 
       secondary:{
         marginTop:"15px"
-      }
+      },
+      content:{
+        height:"22%",
+      },
 
 
     };

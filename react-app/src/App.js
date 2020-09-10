@@ -10,8 +10,7 @@ import {createStore, combineReducers}  from 'redux';
 //import autres pages
 import MyMenu from './Menu'
 import Home from'./Home';
-import Experiences from'./Experiences';
-import Projets from "./Projets";
+
 
 
 // redux 
@@ -25,8 +24,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/experiences" component={Experiences} />
-        <Route path="/projets" component={Projets} />
+
       </Switch>
     </Router>
     </Provider>

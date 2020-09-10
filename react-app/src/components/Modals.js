@@ -120,9 +120,6 @@ function SimpleModal() {
     })
     var listActivityRaw = await requestBDD.json()
 
-
-
-
   }
 
   return (

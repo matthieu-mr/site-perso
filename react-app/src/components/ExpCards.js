@@ -50,7 +50,10 @@ const [listExp, setListExt] = useState()
             listExp.map((item)=>{
              let lien = `${item.lien}`
                 return (
-                  <Grid item xs={12} sm={4}> 
+                  <Grid item  xs={12} sm={4}   container
+                  direction="row"
+                  justify="space-evenly"
+                  alignItems="stretch"> 
                     <Card className={classes.exp}>
                     <CardHeader className={classes.carditemExp}
                                 classes={{
@@ -91,8 +94,6 @@ const [listExp, setListExt] = useState()
     {Affichage}
 </Grid>
 
-   
-
 
   );
 }
@@ -112,7 +113,8 @@ const styles = {
       },
     
       carditemExp:{
-    backgroundColor:"#9c4dcc",
+        backgroundColor:"#d1c4e9",
+
 
       },
     

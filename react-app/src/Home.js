@@ -16,10 +16,6 @@ import { Link } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import Button from '@material-ui/core/Button';
-// import des icones 
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 
 
 // import des cards
@@ -32,8 +28,9 @@ import Typography from '@material-ui/core/Typography';
 
 // import des icones 
 
-import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
-
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
+import DesktopMacIcon from '@material-ui/icons/DesktopMac';
+import WebIcon from '@material-ui/icons/Web';
 
 function Home(props) {
 
@@ -54,20 +51,20 @@ useEffect(() => {
 
 
 var projetWordpress = listProject.map (function(item,i){
-  if(item.type_projet =="Site Wordpress" ){
+  if(item.type_projet ==="Site Wordpress" ){
    return <Projet key={i} icon="wordpress" type ={item.type_projet} name={item.nom} description={item.description} techno ={item.techno} objectif={item.objectifs} front={item.lien_git_front} back={item.lien_git_back} lien={item.lien_perso} />
   }
 })
 
 var web = listProject.map (function(item,i){
-  if(item.type_projet =="Site internet" ){
+  if(item.type_projet ==="Site internet" ){
    return <Projet key={i} icon="site" type ={item.type_projet} name={item.nom} description={item.description} techno ={item.techno} objectif={item.objectifs} front={item.lien_git_front} back={item.lien_git_back} lien={item.lien_perso} />
   }
 })
 
 
 var appli = listProject.map (function(item,i){
-  if(item.type_projet =="Application Mobile" ){
+  if(item.type_projet ==="Application Mobile" ){
    return <Projet key={i} icon="appli"  type ={item.type_projet} name={item.nom} description={item.description} techno ={item.techno} objectif={item.objectifs} front={item.lien_git_front} back={item.lien_git_back} lien={item.lien_perso} />
   }
 })
@@ -95,10 +92,10 @@ var appli = listProject.map (function(item,i){
             title="Développeur Web & Web Mobile "
           />
         <Typography  style={styles.firstcontent}>
-            Matthieu Michon-Rossel <br /> 
-            <a href="tel:+33618199252"  className={classes.lien} > <PhoneAndroidIcon /> Téléphone : 06 18 19 92 52</a>  <br /> 
-            <a href="mailto:m.michon.rossel@gmail.com"   className={classes.lien}> <MailOutlineIcon /> Mail :  m.michon.rossel@gmail.com</a>  <br /> 
-            32 ans <br /> 
+            Matthieu Michon-Rossel    -    32 ans<br /> 
+            <a href="tel:+33618199252"  className={classes.lien} > Téléphone : 06 18 19 92 52</a> <br />
+            <a href="mailto:m.michon.rossel@gmail.com"   className={classes.lien}> Mail :  m.michon.rossel@gmail.com</a> <br />
+            
             Permis B - Motorisé <br /> 
             16 rue Saint Hilaire, 94210, La Varenne Saint Hilaire <br />
           </Typography>
@@ -110,9 +107,10 @@ var appli = listProject.map (function(item,i){
 
         <CardContent>
           <Typography component="p" style={styles.content}>
-            Après plusieurs années passées en gestion de projet webmarketing,responsable Ux et fait du Growth Hacking, j'ai décidé de me réorienter dans le domaine du développement web & Web Mobile. <br /> 
-            J'ai donc intégré la capsule, un bootcamp de développement spécialisé sur le language javascript dans l'objectif 
-            d'acquérir les compétences nécessaires au développement d"application web & web Mobile sous React et React Native
+            Après plusieurs années passées en gestion de projet webmarketing,responsable Ux,  j'ai décidé de me spécialiser dans le développement d'application Web & Web Mobile. <br /> 
+            J'ai donc intégré la capsule, un bootcamp de développement sur le language javascript dans l'objectif 
+            d'acquérir les compétences nécessaires au développement applicatif sous React et React Native.<br />
+            Ce site développé sous react & node.js vous présente mes différents projets déjà réalisés, pendant et en dehors de la formation. 
           </Typography>
         </CardContent>
     </Grid>
@@ -145,19 +143,24 @@ var appli = listProject.map (function(item,i){
 
 
 
-{/* ---------------------  exp web --------------------- */}
+{/* ---------------------  exp appli mobile --------------------- */}
 <Card className={classes.card}  id="appli">
         <CardHeader className={classes.carditem}
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
-                 <DesktopWindowsIcon />
+                 <PhoneIphoneIcon />
               </Avatar>
             }
             title="Applications Mobiles" 
           />
 
-      
+<Grid   container
+  direction="row"
+  justify="space-evenly"
+  alignItems="stretch"
+>
         {appli}
+    </Grid>
       
     </Card>
 
@@ -165,20 +168,20 @@ var appli = listProject.map (function(item,i){
 
 
 
-{/* ---------------------  exp web --------------------- */}
+{/* ---------------------  exp web dev --------------------- */}
     <Card className={classes.card}  id="web">
         <CardHeader className={classes.carditem}
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
-                 <DesktopWindowsIcon />
+                 <DesktopMacIcon />
               </Avatar>
             }
             title="Projets Web - React - Node.js / express" 
           />
 
-    
+<Grid container spacing={2}>
         {web}
-       
+   </Grid>    
     </Card>
 
 
@@ -187,15 +190,15 @@ var appli = listProject.map (function(item,i){
         <CardHeader className={classes.carditem}
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
-                 <DesktopWindowsIcon />
+                 <WebIcon />
               </Avatar>
             }
             title="Projets Web - Autour de Wordpress" 
           />
 
-    
-        {projetWordpress}
-    
+      <Grid container spacing={2}>
+              {projetWordpress}
+      </Grid>   
     </Card>
    </Grid>
   </Grid>
@@ -283,6 +286,7 @@ backgroundColor:"#873ba1"
   },
 
   firstcontent:{
+    color: '#212121',
     fontSize:"20px",
     marginLeft:'20px',
     marginTop:"30px",
@@ -291,6 +295,12 @@ backgroundColor:"#873ba1"
   avatar:{
     background:"#4a0072"
   },
+  lien:{
+    color: "#4a0072",
+    textDecoration:"none",
+   
+
+  }
 
 };
 
