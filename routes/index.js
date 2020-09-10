@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var request = require('sync-request');
-var nodemailer = require ('nodemailer') ; 
-var  bodyParser = require('body-parser');
+ nodemailer = require ('nodemailer') ; 
+  bodyParser = require('body-parser');
 
 
 //import des routes
@@ -47,7 +47,11 @@ router.get('/projets', async function(req, res, next) {
           // should be replaced with real sender's account
           user: 'm.michon.rossel@gmail.com',
           pass: 'Uni94forMail'
-      }
+      },
+      tls: { 
+        // do not fail on invalid certs 
+        rejectUnauthorized: false 
+       } 
   });
   let mailOptions = {
       // should be replaced with real recipient's account
