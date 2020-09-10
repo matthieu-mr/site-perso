@@ -17,7 +17,9 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
-
+// import des icones 
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 
 
 // import des cards
@@ -37,17 +39,6 @@ function Home(props) {
 
   const { classes } = props;
 
-
-   // Partie tabs 
-    
-    const [value, setValue] = React.useState(0);
-  
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
-
-
-
 // data for all projects
 
 const [listProject,setListProject] = useState([])
@@ -56,7 +47,6 @@ useEffect(() => {
   async function recupDonnée(){
       var requestBDD = await fetch(`/projets`)
       var listProjetRaw = await requestBDD.json()
-      console.log("liste projet reaquete",listProjetRaw)
       setListProject(listProjetRaw.result)
     }
   recupDonnée()
@@ -83,38 +73,38 @@ var appli = listProject.map (function(item,i){
 })
 
 
-
-
-
-
-
   return(
-    <div className={classes.body}>
-    <MyMenu />
+    <div className={classes.body} xs={12}>
+      <div className={classes.menuSticky}>
+      <MyMenu />
+
+      </div>
+  
     <SimpleModal />
 
 <Grid container className={classes.bodystyle} >
-  <Grid item sm={6} className={classes}>
+  <Grid item xs={12} sm={6} className={classes}>
 
 {/* ---------------------  Presentation  --------------------- */}
 
 
-<Card className={classes.card} style={{marginTop:10}}>
+<Card className={classes.card} style={{marginTop:20}}>
   <Grid container spacing={4}>
-  
-    <Grid item sm={8} justify="flex-start" >  
+    <Grid item xs={12} sm={8} justify="flex-start" >  
         <CardHeader className={classes.carditem}
             title="Développeur Web & Web Mobile "
           />
         <Typography  style={styles.firstcontent}>
             Matthieu Michon-Rossel <br /> 
+            <a href="tel:+33618199252"  className={classes.lien} > <PhoneAndroidIcon /> Téléphone : 06 18 19 92 52</a>  <br /> 
+            <a href="mailto:m.michon.rossel@gmail.com"   className={classes.lien}> <MailOutlineIcon /> Mail :  m.michon.rossel@gmail.com</a>  <br /> 
             32 ans <br /> 
             Permis B - Motorisé <br /> 
             16 rue Saint Hilaire, 94210, La Varenne Saint Hilaire <br />
           </Typography>
 
       </Grid>
-      <Grid item sm={4} style={{justifyItems:"flex-end"}}>  
+      <Grid item sm={4}>  
         <img className={classes.pictureheader} src="/perso.jpg" alt="image" />
       </Grid>
 
@@ -131,9 +121,7 @@ var appli = listProject.map (function(item,i){
 
 <Typography component="h2" className={classes.expTitle}> Formations</Typography>
 
-
-  <ExpCards />
-
+        <ExpCards />
 
    <Divider variant="middle" />
 
@@ -158,7 +146,7 @@ var appli = listProject.map (function(item,i){
 
 
 {/* ---------------------  exp web --------------------- */}
-<Card className={classes.card}>
+<Card className={classes.card}  id="appli">
         <CardHeader className={classes.carditem}
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
@@ -168,9 +156,9 @@ var appli = listProject.map (function(item,i){
             title="Applications Mobiles" 
           />
 
-        <Grid className={classes.gridProjet}>
+      
         {appli}
-        </Grid>
+      
     </Card>
 
 
@@ -178,48 +166,38 @@ var appli = listProject.map (function(item,i){
 
 
 {/* ---------------------  exp web --------------------- */}
-    <Card className={classes.card}>
+    <Card className={classes.card}  id="web">
         <CardHeader className={classes.carditem}
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
                  <DesktopWindowsIcon />
               </Avatar>
             }
-            title="Projet Web - React - Node.js / express" 
+            title="Projets Web - React - Node.js / express" 
           />
 
-        <Grid className={classes.gridProjet}>
+    
         {web}
-        </Grid>
+       
     </Card>
 
 
 {/* ---------------------  exp wordpress --------------------- */}
-<Card className={classes.card}>
+<Card className={classes.card} id="wordpress">
         <CardHeader className={classes.carditem}
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
                  <DesktopWindowsIcon />
               </Avatar>
             }
-            title="Projet Web - Autour de Wordpress" 
+            title="Projets Web - Autour de Wordpress" 
           />
 
-        <Grid className={classes.gridProjet}>
+    
         {projetWordpress}
-        </Grid>
+    
     </Card>
-
-
-
-
-
-
-
-
-
-
-  </Grid>
+   </Grid>
   </Grid>
 
     </div>
@@ -233,8 +211,11 @@ const styles = {
 body:{
   backgroundColor:"#eceff1"
 },
+root: {
+  flexGrow: 1,
+},
 
-  bodystyle:{
+bodystyle:{
   display:"flex",
   flexDirection:"column",
   alignItems:"center",
@@ -248,8 +229,9 @@ body:{
     marginBottom:"50px",
   },
   pictureheader:{
-    alignSelf:"flex-end",
-    height:200,
+    display:"flex",
+    width:"70%",
+    margin:"auto"
   },
   subheader:{
     color:"white"
@@ -309,12 +291,6 @@ backgroundColor:"#873ba1"
   avatar:{
     background:"#4a0072"
   },
-
-  gridProjet:{
-    display:"flex",
-    marginBottom:"15px"
-  }
-
 
 };
 

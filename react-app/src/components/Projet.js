@@ -44,7 +44,6 @@ function Projet(props) {
 const { classes } = props;
 const [listExp, setListExt] = useState()
 
-console.log("recup projet", props.name)
 
 let objectifs = "type de projet : " + props.objectif
 
@@ -125,8 +124,8 @@ if(props.lien =="false" && props.back =="false" && props.front =="false") {
 
 
   return (
-      
-        <Grid item  sm={4}> 
+    <Grid container spacing={2}   alignItems="stretch">
+        <Grid item  xs={12} sm={4}> 
                     <Card className={classes.exp}>
                     <CardHeader className={classes.carditemExp}
                                 classes={{
@@ -156,7 +155,7 @@ if(props.lien =="false" && props.back =="false" && props.front =="false") {
                     </CardActions>
                     </Card>
                     </Grid>
-   
+                    </Grid>
 
 
   );

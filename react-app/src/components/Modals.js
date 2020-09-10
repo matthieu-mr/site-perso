@@ -56,14 +56,18 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: '1px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
   fab:{
-    float:"right",
-    marginRight:'20%',
-    marginTop:-30,
+    marginLeft:"80%",
+    marginRight:"20%",
+    position:"fixed",
+    marginTop:"-35px",
+    fontSize:"150px",
+    height:"70px",
+    width:"70px",
     background:"#4a0072",
     '&:hover': {
       background: '#c158dc',
@@ -80,6 +84,10 @@ const useStyles = makeStyles((theme) => ({
   },
   lien:{
     color: '#4a0072',
+    textDecoration:"none",
+    margin:15,
+    display:"flex"
+
   }
 
 }));
@@ -90,7 +98,7 @@ function SimpleModal() {
   const [phone,setPhone] = useState('');
   const [mail,setMail] = useState('');
   const [info,setInfo] = useState('');
-
+  const [name,setName] = useState('')
 
 
   const handleOpen = () => {
@@ -102,14 +110,19 @@ function SimpleModal() {
   };
 
 
-  let sendForm =()=>{
-    var message = {
-      from: mail,
-      to: "receiver@sender.com",
-      subject: "Email depuis site CV Perso",
-      text: info + phone,
-      html: `<p>${info}</p> <p>${phone} </p>`
-    }; 
+  let sendForm =async ()=>{
+
+
+    var requestBDD = await fetch(`/sendmail`,{
+      method:"POST",
+      headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body:`mail=${mail}&info=${info}&phone=${phone}`
+    })
+    var listActivityRaw = await requestBDD.json()
+
+
+
+
   }
 
   return (
@@ -131,16 +144,29 @@ function SimpleModal() {
           timeout: 500,
         }}
       >
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">Mes informations</h2>
 
-            <a href="tel:+33500000000"  className={classes.lien} > <PhoneAndroidIcon /> Téléphone : 06 18 19 92 52</a>
+
+
+        <Fade in={open}>
+        
+          <div className={classes.paper}>
+            <h2 id="transition-modal-title">Me contacter :</h2>
+
+            <a href="tel:+33618199252"  className={classes.lien} > <PhoneAndroidIcon /> Téléphone : 06 18 19 92 52</a>
             <a href="mailto:m.michon.rossel@gmail.com"   className={classes.lien}> <MailOutlineIcon /> Mail :  m.michon.rossel@gmail.com</a>
 
-            <h2 id="transition-modal-title">Contact via formulaire</h2>
-            <form className={classes.root} noValidate autoComplete="off">
+            <h2 id="transition-modal-title">Contact via formulaire :</h2>
+            <form className={classes.root} noValidate autoComplete="on">
               
+            <CssTextField
+                className={classes.margin}
+                label="Vos Nom & prénom"
+                id="standard-basic"
+                onChange={(e)=> setName(e.target.value)}
+                fullWidth
+              />
+
+
               <CssTextField
                 className={classes.margin}
                 label="Votre téléphone"
@@ -174,7 +200,6 @@ function SimpleModal() {
                   color="primary"
                   className={classes.fab}
                   endIcon={<SendIcon/>}
-                  
                   onClick={sendForm}
                 >
                  Envoyer

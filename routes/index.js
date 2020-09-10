@@ -37,7 +37,13 @@ router.get('/projets', async function(req, res, next) {
      res.json( {result} );
   });
 
-  router.post('/sendmail', async function(req, res, next) {
+
+
+
+router.post('/sendmail', async function(req, res, next) {
+
+console.log("req.body", req.body)
+/*
 
     let transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
@@ -65,6 +71,8 @@ router.get('/projets', async function(req, res, next) {
       }
       console.log('Message %s sent: %s', info.messageId, info.response);
   });
+
+*/
 
   let result ="test"
        res.json( {result} );

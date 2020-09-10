@@ -50,7 +50,7 @@ const [listExp, setListExt] = useState()
             listExp.map((item)=>{
              let lien = `${item.lien}`
                 return (
-                    <Grid item sm={4}> 
+                  <Grid item xs={12} sm={4}> 
                     <Card className={classes.exp}>
                     <CardHeader className={classes.carditemExp}
                                 classes={{
@@ -87,12 +87,11 @@ const [listExp, setListExt] = useState()
 
 
   return (
-<Grid className={classes.expGrid}>
- 
-   {Affichage}
- 
-
+<Grid container spacing={2}   alignItems="stretch">
+    {Affichage}
 </Grid>
+
+   
 
 
   );
@@ -118,7 +117,7 @@ const styles = {
       },
     
   expGrid:{
-    display:"flex",
+    
     marginBottom:"15px"
   },
 

@@ -1,11 +1,12 @@
-import React from 'react';
+import React,{useState} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles  } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import HomeIcon from '@material-ui/icons/Home';
 import {connect} from 'react-redux';
-
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // Modal 
 import ModalForm from "./components/Modals"
@@ -37,51 +38,61 @@ function MyMenu(props) {
     props.isVisible()
   }
 
+  // menu responsive
+  
+  const [isMobile,setIsMobile] = useState(false)
+
+// detection mobile 
+let MyComponent =() => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  if (matches){
+    setIsMobile(true)
+  }
+  console.log("breakpoint",matches)
+}
+
+MyComponent()
+
+
+
+
 
 
   return (
-    <div className={classes.menu}>
-
-
+<div className={classes.menu}>
 <Grid container className={classes.bodystyle} >
   <Grid item sm={8} className={classes}>
 
     
             <Breadcrumbs aria-label="breadcrumb" separator="-" >
-            <Link 
-              color="inherit" 
-              href="/" 
-              onClick={handleClick} 
-              className={classes.link}>
-            <HomeIcon className={classes.icon} />
-                Accueil
-            </Link>
+
             <Link
                 color="inherit"
-                href="/experiences"
+                href="#appli"
                 onClick={handleClick}
                 className={classes.link}
             >
                 <PersonIcon  className={classes.icon} />
-                Experiences
+                Applications Mobiles
             </Link>
             <Link
                 color="inherit"
-                href="/experiences"
+                href="#web"
                 onClick={handleClick}
                 className={classes.link}
             >
                 <PersonIcon  className={classes.icon} />
-                Projet Web
+                Projets Web
             </Link>
             <Link
                 color="inherit"
-                href="/experiences"
+                href="#wordpress"
                 onClick={handleClick}
                 className={classes.link}
             >
                 <PersonIcon  className={classes.icon} />
-                Projet React & React NNativ
+                Projets Wordpress
             </Link>
 
 
