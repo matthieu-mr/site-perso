@@ -6,7 +6,13 @@ var nodemailer = require ('nodemailer') ;
 
 //import des routes
 var projetModel = require('../models/projets-md')
-var expModel = require('../models/exp-md')
+var expModel = require('../models/exp-md');
+const app = require('../app');
+
+// envoi mail 
+var sslRootCAs = require('ssl-root-cas/latest')
+sslRootCAs.inject()
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -32,29 +38,25 @@ router.get('/projets', async function(req, res, next) {
   router.post('/sendmail', async function(req, res, next) {
 
   // create reusable transporter object using the default SMTP transport
-  // Generate test SMTP service account from ethereal.email
-  // Only needed if you don't have a real mail account for testing
-  let testAccount = await nodemailer.createTestAccount();
-
-  // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
+    host: "mail.matthieu-michon.fr",
+    port: 26,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: testAccount.user, // generated ethereal user
-      pass: testAccount.pass, // generated ethereal password
+      user: "cv@matthieu-michon.fr", // generated ethereal user
+      pass: "Uni94forCv", // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: "test@test.com", // sender address
+    from: '"Fred Foo 👻" <cv@matthieu-michon.fr>', // sender address
     to: "m.michon.rossel@gmail.com", // list of receivers
     subject: "Hello ✔", // Subject line
     text: "Hello world?", // plain text body
     html: "<b>Hello world?</b>", // html body
-  });
+  }
+  );
 
   console.log("Message sent: %s", info.messageId);
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
@@ -76,3 +78,4 @@ router.get('/projets', async function(req, res, next) {
 
 
 module.exports = router;
+
