@@ -3,6 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var request = require('sync-request');
 var nodemailer = require ('nodemailer') ; 
+var  bodyParser = require('body-parser');
+
 
 //import des routes
 var projetModel = require('../models/projets-md')
@@ -37,37 +39,28 @@ router.get('/projets', async function(req, res, next) {
 
   router.post('/sendmail', async function(req, res, next) {
 
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: "mail.matthieu-michon.fr",
-    port: 26,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: "cv@matthieu-michon.fr", // generated ethereal user
-      pass: "Uni94forCv", // generated ethereal password
-    },
+    let transporter = nodeMailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: {
+          // should be replaced with real sender's account
+          user: 'm.michon.rossel@gmail.com',
+          pass: 'Uni94forMail'
+      }
   });
-
-  // send mail with defined transport object
-  let info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <cv@matthieu-michon.fr>', // sender address
-    to: "m.michon.rossel@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
-  }
-  );
-
-  console.log("Message sent: %s", info.messageId);
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-  // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-
-
-    let result = "email send";
-
+  let mailOptions = {
+      // should be replaced with real recipient's account
+      to: 'm.michon.rossel@gmail.com',
+      subject: "test",
+      text: "test"
+  };
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+      }
+      console.log('Message %s sent: %s', info.messageId, info.response);
+  });
 
        res.json( {result} );
     });
