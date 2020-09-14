@@ -110,7 +110,7 @@ if(props.lien =="false" && props.back =="false" && props.front =="false") {
 
   return (
 
-  <Grid item  xs={12} sm={4}   container
+  <Grid item  xs={12} md={4}   container
         direction="row"
         justify="space-evenly"
         alignItems="stretch"> 
@@ -172,6 +172,7 @@ const styles = {
       exp:{
         margin:"15px",
         marginBottom:"10px",    
+        width:"100%"
       },
 
       link:{

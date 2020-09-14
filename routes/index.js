@@ -45,22 +45,18 @@ router.get('/projets', async function(req, res, next) {
 
 router.post('/sendmail', async function(req, res, next) {
 
-console.log("req.body", req.body)
+
+
+
 let result =true 
+
+console.log("req.body",req.body)
 
 let name = req.body.name
 let mail = req.body.mail
 let info = req.body.info
+let phone = req.body.phone 
 
-
-// recup mot de passe gogole
-
-//var user = await User.findOne({ email: req.body.email });
-// var hash = SHA256(req.body.password + user.salt).toString(encBase64);
-
-
-
-/*
     let transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
@@ -78,8 +74,8 @@ let info = req.body.info
   let mailOptions = {
       // should be replaced with real recipient's account
       to: 'm.michon.rossel@gmail.com',
-      subject: "test",
-      text: "test"
+      subject: "Contact site internet CV ",
+      text: `nom & prenom : ${name} -- tel : ${phone} --- Email:${mail} --- Autres informations :${info}  `
   };
   transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -89,31 +85,12 @@ let info = req.body.info
       console.log('Message %s sent: %s', info.messageId, info.response);
   });
 
-*/
 
-
+      console.log(result)
        res.json( {result} );
     });
   
   
-
-    router.get('/saveCredential', async function(req, res, next) {  
-
-        let crendential = "hbmxoxyvcrunsrxb"
-        var salt = uid2(32);
-
-        // SHA256(myPassword + salt).toString(encBase64);
-        var newUser = new UserModel ({
-          email: "m.michon.rossel@gmail.com",
-          salt : salt,
-          password: SHA256(req.body.password + salt).toString(encBase64),
-          token: uid2(32)
-        });
-
-
-         res.json( {result} );
-      });
-
 
 module.exports = router;
 

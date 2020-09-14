@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SimpleModal() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const [phone,setPhone] = useState('');
   const [mail,setMail] = useState('');
   const [info,setInfo] = useState('');
@@ -128,7 +128,7 @@ function SimpleModal() {
       body:`mail=${mail}&info=${info}&phone=${phone}&name=${name}`
     })
     var listActivityRaw = await requestBDD.json()
-
+    setOpen(false)
   }
 
 let formModal = (

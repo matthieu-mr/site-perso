@@ -80,7 +80,7 @@ var appli = listProject.map (function(item,i){
     <SimpleModal />
 
 <Grid container className={classes.bodystyle} >
-  <Grid item xs={12} sm={6} className={classes}>
+  <Grid item xs={12} md={6} className={classes}>
 
 {/* ---------------------  Presentation  --------------------- */}
 

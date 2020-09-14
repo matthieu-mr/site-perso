@@ -50,7 +50,7 @@ const [listExp, setListExt] = useState()
             listExp.map((item)=>{
              let lien = `${item.lien}`
                 return (
-                  <Grid item  xs={12} sm={4}   container
+                  <Grid item  xs={12} md={4}   container
                   direction="row"
                   justify="space-evenly"
                   alignItems="stretch"> 
