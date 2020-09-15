@@ -165,9 +165,9 @@ affichageMenu = (
 
 affichageMenu = (
 
-  <Grid >
+  <Grid className={classes.menuMobile}>
     <div>
-      <Button className={classes.menuMobile}
+      <Button className={classes.boutonMobile}
         aria-controls="customized-menu"
         aria-haspopup="true"
         variant="contained"
@@ -183,37 +183,52 @@ affichageMenu = (
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-    <Link href="#appli"> 
+    <Link to="/" className={classes.link}> 
    
         <StyledMenuItem>
           <ListItemIcon>
             <PhoneIphoneIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Applications Mobiles" />
+          <ListItemText primary="Accueil"                       
+                          classes={{
+                            primary:classes.primary
+                          }}/>
         </StyledMenuItem>
     </Link>
-    <Link href="#web">  
+
+    <Link to="/#web"  className={classes.link}>  
   
         <StyledMenuItem>
           <ListItemIcon>
             <DesktopMacIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Projets web" />
+          <ListItemText primary="Projets"                          
+                           classes={{
+                            primary:classes.primary
+                          }}/>
         </StyledMenuItem>
     </Link>
 
-        <Link href="#wordpress"> 
+    <Link to="/experiences"  className={classes.link} >
         
         <StyledMenuItem >
         
           <ListItemIcon>
             <WebIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Projets wordpress" />
+          <ListItemText primary="Experiences Professionnelles"
+                                    classes={{
+                                      primary:classes.primary
+                                    }}/> 
           </StyledMenuItem>
         </Link>
       </StyledMenu>
+
+      <Button className={classes.dlButtonMobile } variant="contained" color="primary" href="\CV-Matthieu Michon Rossel.pdf">
+              Telecharger mon CV
+            </Button>
     </div>
+
     </Grid>
     )
 
@@ -243,15 +258,13 @@ const styles = {
     color:"white",
   },
 
-  menuMobile:{
-    background: '#7b1fa2',
 
-  },
 
   link: {
     display: 'flex',
     color:"white"
   },
+
   icon: {
     marginRight: 5,
     marginLeft:5,
@@ -261,7 +274,36 @@ const styles = {
   },
 dlButton:{
   backgroundColor:"#4a0072",
-}
+},
+
+menuMobile:{
+  background: '#7b1fa2',
+  marginTop:"500",
+  color:"white",
+  paddingTop:"5px",
+  paddingBottom:"5px",
+},
+
+
+boutonMobile:{
+  background: '#7b1fa2',
+  height:"35px",
+  marginTop:"5px",
+},
+
+dlButtonMobile:{
+  marginLeft:"15px",
+  backgroundColor:"#4a0072",
+  height:"35px",
+  marginTop:"5px",
+},
+primary:{
+  color:"#4a0072",
+  textDecoration: "none"
+
+},
+
+
 
 };
 
