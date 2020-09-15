@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 import {createStore, combineReducers}  from 'redux';
 
 //import autres pages
-import MyMenu from './Menu'
+
 import Home from'./Home';
 import Exppro from "./Experiences"
 

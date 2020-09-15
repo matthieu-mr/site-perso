@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles  } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -113,7 +113,7 @@ affichageMenu = (
 
             <Link
                 color="inherit"
-                href="/"
+                to="/"
                 onClick={handleClick}
                 className={classes.link}
             >
@@ -122,7 +122,7 @@ affichageMenu = (
             </Link>
             <Link
                 color="inherit"
-                href="/#appli"
+                to="/#appli"
                 onClick={handleClick}
                 className={classes.link}
             >
@@ -132,10 +132,11 @@ affichageMenu = (
            
             <Link
                 color="inherit"
-                href=" /experiences"
+                to="/experiences"
                 onClick={handleClick}
                 className={classes.link}
             >
+                
                 <WebIcon  className={classes.icon} />
                 Experiences professionnelles 
             </Link>
