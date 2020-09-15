@@ -27,7 +27,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={Home} />
-        <IndexRoute component={AppSplash}/>
+     
         <Route path="/experiences" component={Exppro} />
       </Switch>
     </Router>
