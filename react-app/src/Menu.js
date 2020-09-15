@@ -16,9 +16,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 
 
 //css
@@ -26,8 +23,7 @@ import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
 
 // import des icones 
-import PersonIcon from '@material-ui/icons/Person';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
@@ -104,7 +100,7 @@ function MyMenu(props) {
 
 let affichageMenu
 
-console.log("function", MyComponent())
+
 
 
 if (MyComponent()==true){
@@ -117,31 +113,37 @@ affichageMenu = (
 
             <Link
                 color="inherit"
-                href="#appli"
+                href="/"
                 onClick={handleClick}
                 className={classes.link}
             >
-                <PhoneIphoneIcon  className={classes.icon} />
-                Applications Mobiles
+                <HomeIcon  className={classes.icon} />
+               Acceuil
             </Link>
             <Link
                 color="inherit"
-                href="#web"
+                href="/#appli"
                 onClick={handleClick}
                 className={classes.link}
             >
                 <DesktopMacIcon  className={classes.icon} />
-                Projets Web
+                Projets 
             </Link>
+           
             <Link
                 color="inherit"
-                href="#wordpress"
+                href=" /experiences"
                 onClick={handleClick}
                 className={classes.link}
             >
                 <WebIcon  className={classes.icon} />
-                Projets Wordpress
+                Experiences professionnelles 
             </Link>
+
+            <Button className={classes.dlButton} variant="contained" color="primary" href="\CV-Matthieu Michon Rossel.pdf">
+              Telecharger mon CV
+            </Button>
+
        </Breadcrumbs>
     </Grid>
   </Grid>
@@ -256,7 +258,9 @@ const styles = {
     height: 20,
     color:"white"
   },
-
+dlButton:{
+  backgroundColor:"#4a0072",
+}
 
 };
 

@@ -11,7 +11,10 @@ var encBase64 = require("crypto-js/enc-base64");
 //import des routes
 var projetModel = require('../models/projets-md')
 var expModel = require('../models/exp-md');
-var userMailModel = require ('../models/userMail')
+var expproModel = require ('../models/exp-pro')
+
+
+
 const app = require('../app');
 
 // envoi mail 
@@ -40,17 +43,18 @@ router.get('/projets', async function(req, res, next) {
      res.json( {result} );
   });
 
+  
+  router.get('/exp-pro', async function(req, res, next) {  
+    let result = await expproModel.find();
 
-
+       res.json( {result} );
+    });
 
 router.post('/sendmail', async function(req, res, next) {
 
+let result =false 
 
 
-
-let result =true 
-
-console.log("req.body",req.body)
 
 let name = req.body.name
 let mail = req.body.mail
@@ -82,11 +86,9 @@ let phone = req.body.phone
           result = false
           return console.log("erreure transporter",error);
       }
-      console.log('Message %s sent: %s', info.messageId, info.response);
+      result = true
   });
 
-
-      console.log(result)
        res.json( {result} );
     });
   

@@ -41,7 +41,7 @@ const [listExp, setListExt] = useState()
 
     let Affichage = (
         <div className={classes.progress}>
-    <CircularProgress color="#eceff1" />
+     <CircularProgress color="secondary" />
         </div>
         
     )

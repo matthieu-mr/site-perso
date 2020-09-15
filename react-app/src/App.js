@@ -10,7 +10,7 @@ import {createStore, combineReducers}  from 'redux';
 //import autres pages
 import MyMenu from './Menu'
 import Home from'./Home';
-
+import Exppro from "./Experiences"
 
 
 // redux 
@@ -24,7 +24,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={Home} />
-
+        <Route path="/experiences" component={Exppro} />
       </Switch>
     </Router>
     </Provider>

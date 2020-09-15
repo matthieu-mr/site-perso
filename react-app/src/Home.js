@@ -71,135 +71,133 @@ var appli = listProject.map (function(item,i){
 
 
   return(
-    <div className={classes.body} xs={12}>
-      <div className={classes.menuSticky}>
-      <MyMenu />
+<div className={classes.body} xs={12}>
 
-      </div>
-  
-    <SimpleModal />
+<MyMenu />
+<SimpleModal />
 
-<Grid container className={classes.bodystyle} >
-  <Grid item xs={12} md={6} className={classes}>
+  <Grid container className={classes.bodystyle} >
+    <Grid item xs={12} md={6} className={classes}>
 
-{/* ---------------------  Presentation  --------------------- */}
+          {/* ---------------------  Presentation  --------------------- */}
 
 
-<Card className={classes.card} style={{marginTop:20}}>
-  <Grid container spacing={4}>
-    <Grid item xs={12} sm={8} >  
-        <CardHeader className={classes.carditem}
-            title="Développeur Web & Web Mobile "
-          />
-        <Typography  style={styles.firstcontent}>
-            Matthieu Michon-Rossel    -    32 ans<br /> 
-            <a href="tel:+33618199252"  className={classes.lien} > Téléphone : 06 18 19 92 52</a> <br />
-            <a href="mailto:m.michon.rossel@gmail.com"   className={classes.lien}> Mail :  m.michon.rossel@gmail.com</a> <br />
-            
-            Permis B - Motorisé <br /> 
-            16 rue Saint Hilaire, 94210, La Varenne Saint Hilaire <br />
-          </Typography>
+          <Card className={classes.card} style={{marginTop:20}}>
+            <Grid container spacing={4}>
+              <Grid item xs={12} sm={8} >  
+                  <CardHeader className={classes.carditem}
+                      title="Développeur Web & Web Mobile "
+                      subheader=" React / ReactNative - Node.js / Express" 
+                      classes={{
+                        subheader:classes.subheader
+                        }}
+                        />
+                  <Typography  style={styles.firstcontent}>
+                      Matthieu Michon-Rossel    -    32 ans<br /> 
+                      <a href="tel:+33618199252"  className={classes.lien} > Téléphone : 06 18 19 92 52</a> <br />
+                      <a href="mailto:m.michon.rossel@gmail.com"   className={classes.lien}> Mail :  m.michon.rossel@gmail.com</a> <br />
+                      
+                      Permis B - Motorisé <br /> 
+                      16 rue Saint Hilaire, 94210, La Varenne Saint Hilaire <br />
+                    </Typography>
 
-      </Grid>
-      <Grid item sm={4}>  
-        <img className={classes.pictureheader} src="/perso.jpg" alt="image" />
-      </Grid>
+                </Grid>
+                <Grid item sm={4}>  
+                  <img className={classes.pictureheader} src="/perso.jpg" alt="image" />
+                </Grid>
 
-        <CardContent>
-          <Typography component="p" style={styles.content}>
-            Après plusieurs années passées en gestion de projet webmarketing,responsable Ux,  j'ai décidé de me spécialiser dans le développement d'application Web & Web Mobile. <br /> 
-            J'ai donc intégré la capsule, un bootcamp de développement sur le language javascript dans l'objectif 
-            d'acquérir les compétences nécessaires au développement applicatif sous React et React Native.<br />
-            Ce site développé sous react & node.js vous présente mes différents projets déjà réalisés, pendant et en dehors de la formation. 
-          </Typography>
-        </CardContent>
-    </Grid>
+                  <CardContent>
+                    <Typography component="p" style={styles.content}>
+                      Après plusieurs années passées en gestion de projet webmarketing,responsable Ux,  j'ai décidé de me spécialiser dans le développement d'application Web & Web Mobile. <br /> 
+                      J'ai donc intégré la capsule, un bootcamp de développement sur le language javascript dans l'objectif 
+                      d'acquérir les compétences nécessaires au développement applicatif sous React et React Native.<br />
+                      Ce site développé sous react & node.js vous présente mes différents projets déjà réalisés, pendant et en dehors de la formation. 
+                    </Typography>
+                  </CardContent>
+              </Grid>
 
-    <Divider variant="middle" />
+              <Divider variant="middle" />
 
-<Typography component="h2" className={classes.expTitle}> Formations</Typography>
+              <Typography component="h2" className={classes.expTitle}> Formations</Typography>
 
-        <ExpCards />
+                  <ExpCards />
 
-   <Divider variant="middle" />
+            <Divider variant="middle" />
 
-    <CardActions className={classes.expButton}>
-      <Typography className={classes.boutoncard}>En savoir plus : </Typography>
-
-      <Link href="https://www.linkedin.com/in/matthieumichon/" >
-        <Avatar src="/linkedin.png" alt="image" />
-      </Link>
-      <Link href="https://github.com/matthieu-mr/" >
-        <Avatar src="/github.png" alt="image" />
-      </Link>
-        <Link href="https://www.instagram.com/matthieumichonr/" >
-      <Avatar src="/instagram.png" alt="image" />
-        </Link>
-      <Link href="https://twitter.com/MatthieuMichon" >
-        <Avatar src="/twitter.png" alt="image" />
-      </Link>
-    </CardActions>
-</Card>
-
-
-
-{/* ---------------------  exp appli mobile --------------------- */}
-<Card className={classes.card}  id="appli">
-        <CardHeader className={classes.carditem}
-            avatar={
-              <Avatar aria-label="recipe" className={classes.avatar}>
-                 <PhoneIphoneIcon />
-              </Avatar>
-            }
-            title="Applications Mobiles" 
-          />
-
-<Grid   container
-  direction="row"
-  justify="space-evenly"
-  alignItems="stretch"
->
-        {appli}
-    </Grid>
-      
-    </Card>
+              <CardActions className={classes.expButton}>
+                <Typography className={classes.boutoncard}>En savoir plus : </Typography>
+                <Link href="https://www.linkedin.com/in/matthieumichon/" >
+                  <Avatar src="/linkedin.png" alt="image" />
+                </Link>
+                <Link href="https://github.com/matthieu-mr/" >
+                  <Avatar src="/github.png" alt="image" />
+                </Link>
+                  <Link href="https://www.instagram.com/matthieumichonr/" >
+                <Avatar src="/instagram.png" alt="image" />
+                  </Link>
+                <Link href="https://twitter.com/MatthieuMichon" >
+                  <Avatar src="/twitter.png" alt="image" />
+                </Link>
+              </CardActions>
+         </Card>
 
 
 
+          {/* ---------------------  exp appli mobile --------------------- */}
+            <Card className={classes.card}  id="appli">
+                    <CardHeader className={classes.carditem}
+                        avatar={
+                          <Avatar aria-label="recipe" className={classes.avatar}>
+                            <PhoneIphoneIcon />
+                          </Avatar>
+                        }
+                        title="Applications Mobiles" 
+                      />
+
+              <Grid   container
+              direction="row"
+              justify="space-evenly"
+              alignItems="stretch"
+              >
+                {appli}
+              </Grid>
+
+            </Card>
 
 
-{/* ---------------------  exp web dev --------------------- */}
-    <Card className={classes.card}  id="web">
-        <CardHeader className={classes.carditem}
-            avatar={
-              <Avatar aria-label="recipe" className={classes.avatar}>
-                 <DesktopMacIcon />
-              </Avatar>
-            }
-            title="Projets Web - React - Node.js / express" 
-          />
-
-<Grid container spacing={2}>
-        {web}
-   </Grid>    
-    </Card>
 
 
-{/* ---------------------  exp wordpress --------------------- */}
-<Card className={classes.card} id="wordpress">
-        <CardHeader className={classes.carditem}
-            avatar={
-              <Avatar aria-label="recipe" className={classes.avatar}>
-                 <WebIcon />
-              </Avatar>
-            }
-            title="Projets Web - Autour de Wordpress" 
-          />
 
-      <Grid container spacing={2}>
-              {projetWordpress}
-      </Grid>   
-    </Card>
+          {/* ---------------------  exp web dev --------------------- */}
+            <Card className={classes.card}  id="web">
+                <CardHeader className={classes.carditem}
+                    avatar={
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                          <DesktopMacIcon />
+                      </Avatar>
+                    }
+                    title="Projets Web - React - Node.js / express" 
+                  />
+            <Grid container spacing={2}>
+              {web}
+            </Grid>    
+          </Card>
+
+
+          {/* ---------------------  exp wordpress --------------------- */}
+          <Card className={classes.card} id="wordpress">
+                  <CardHeader className={classes.carditem}
+                      avatar={
+                        <Avatar aria-label="recipe" className={classes.avatar}>
+                          <WebIcon />
+                        </Avatar>
+                      }
+                      title="Projets Web - Autour de Wordpress" 
+                    />
+                <Grid container spacing={2}>
+                        {projetWordpress}
+                </Grid>   
+              </Card>
    </Grid>
   </Grid>
 
@@ -230,6 +228,7 @@ bodystyle:{
     flexDirection:"column",
     justifyContent:"flex-end",
     marginBottom:"50px",
+    
   },
   pictureheader:{
     display:"flex",
