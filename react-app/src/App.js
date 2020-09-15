@@ -16,6 +16,9 @@ import Exppro from "./Experiences"
 // redux 
 import modals from "./reducer/ModalReducer"
 
+
+
+
 const store = createStore(combineReducers({modals}));
 
 function App() {
@@ -24,6 +27,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={Home} />
+        <IndexRoute component={AppSplash}/>
         <Route path="/experiences" component={Exppro} />
       </Switch>
     </Router>
