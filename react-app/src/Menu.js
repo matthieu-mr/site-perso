@@ -120,15 +120,7 @@ affichageMenu = (
                 <HomeIcon  className={classes.icon} />
                Acceuil
             </Link>
-            <Link
-                color="inherit"
-                to="/#appli"
-                onClick={handleClick}
-                className={classes.link}
-            >
-                <DesktopMacIcon  className={classes.icon} />
-                Projets 
-            </Link>
+
            
             <Link
                 color="inherit"
