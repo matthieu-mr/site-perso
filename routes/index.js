@@ -54,8 +54,6 @@ router.post('/sendmail', async function(req, res, next) {
 
 let result =false 
 
-
-
 let name = req.body.name
 let mail = req.body.mail
 let info = req.body.info

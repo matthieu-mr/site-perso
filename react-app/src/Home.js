@@ -27,7 +27,6 @@ import Typography from '@material-ui/core/Typography';
 
 
 // import des icones 
-
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import DesktopMacIcon from '@material-ui/icons/DesktopMac';
 import WebIcon from '@material-ui/icons/Web';
